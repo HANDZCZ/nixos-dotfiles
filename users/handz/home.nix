@@ -12,6 +12,13 @@
   home.homeDirectory = "/home/handz";
   home.stateVersion = "25.11";
 
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.commit.autoWrapCommitMessage = false;
+    };
+  };
+
   home.packages = with pkgs; [
     btop
     htop
