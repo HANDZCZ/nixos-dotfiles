@@ -20,6 +20,11 @@
     };
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs; [];
+  };
+
   home.packages = with pkgs; [
     btop
     htop
