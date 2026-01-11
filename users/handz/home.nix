@@ -29,5 +29,8 @@
     btop
     htop
     brave
+    eza
+    bat
+    yt-dlp
   ];
 }
