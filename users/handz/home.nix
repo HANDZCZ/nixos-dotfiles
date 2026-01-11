@@ -3,6 +3,7 @@
 {
   imports = [
     ./noctalia.nix
+    ./nixcord.nix
     ./bash.nix
   ];
 
