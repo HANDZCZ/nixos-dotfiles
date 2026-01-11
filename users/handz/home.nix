@@ -14,6 +14,11 @@
   home.homeDirectory = "/home/handz";
   home.stateVersion = "25.11";
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   programs.lazygit = {
     enable = true;
     settings = {
