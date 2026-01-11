@@ -12,7 +12,13 @@
     extraGroups = [ "wheel" ];
     packages = with pkgs; [];
   };
-  programs.localsend.enable = true;
+
+  programs = {
+    # needed to open ports
+    localsend.enable = true;
+    # doesn't work otherwise
+    steam.enable = true;
+  };
 
   home-manager = {
     useGlobalPkgs = true;
