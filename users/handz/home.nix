@@ -9,6 +9,7 @@
     ./git.nix
     ./bash.nix
     ./fonts.nix
+    ./cursor_icon_themes.nix
   ];
 
   home.username = "handz";
