@@ -12,6 +12,7 @@
     extraGroups = [ "wheel" ];
     packages = with pkgs; [];
   };
+  programs.localsend.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
