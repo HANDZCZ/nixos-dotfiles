@@ -35,6 +35,18 @@
     plugins = with pkgs; [];
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; lib.mkForce [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+    config = {
+      common.default = [ "gtk" "gnome" ];
+    };
+  };
+
   home.packages = with pkgs; [
     btop
     htop
