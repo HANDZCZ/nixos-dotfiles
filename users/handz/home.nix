@@ -12,6 +12,7 @@
     ./cursor_icon_themes.nix
     ./alacritty.nix
     ./starship.nix
+    ./polkit-gnome.nix
   ];
 
   home.username = "handz";
