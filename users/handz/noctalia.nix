@@ -10,7 +10,7 @@
   programs.noctalia-shell = {
     enable = true;
 
-    /*plugins = {
+    plugins = {
       sources = [
         {
           enabled = true;
@@ -19,7 +19,7 @@
         }
       ];
       states = {
-        catwalk = {
+        screen-recorder = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
@@ -27,11 +27,20 @@
       version = 1;
     };
     pluginSettings = {
-      catwalk = {
-        minimumThreshold = 25;
-        hideBackground = true;
+      screen-recorder = {
+        directory = "";
+        filenamePattern = "recording_yyyy-MM-dd_HH-mm-ss";
+        frameRate =  "60";
+        audioCodec = "opus";
+        videoCodec = "h264";
+        quality = "very_high";
+        colorRange = "limited";
+        showCursor = true;
+        copyToClipboard = true;
+        audioSource = "both";
+        videoSource = "portal";
       };
-    };*/
+    };
 
     settings = {
       settingsVersion = 0;
@@ -113,6 +122,9 @@
               drawerEnabled= true;
               hidePassive = false;
               pinned = [];
+            }
+            {
+              id = "plugin:screen-recorder";
             }
             {
               id = "KeepAwake";

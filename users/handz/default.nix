@@ -18,6 +18,7 @@
     localsend.enable = true;
     # doesn't work otherwise
     steam.enable = true;
+    gpu-screen-recorder.enable = true;
   };
 
   home-manager = {

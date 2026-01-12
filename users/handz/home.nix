@@ -56,5 +56,6 @@
     bat
     yt-dlp
     qbittorrent
+    gpu-screen-recorder
   ];
 }
