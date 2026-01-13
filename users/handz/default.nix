@@ -5,6 +5,7 @@
     inputs.home-manager.nixosModules.home-manager
     ../../modules/niri.nix
     ../../modules/steam.nix
+    ../../modules/wine-ntsync.nix
   ];
 
   users.users.handz = {
