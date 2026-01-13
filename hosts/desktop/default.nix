@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../users/handz
     ../../keymaps
+    ../../modules/pipewire-low-latency.nix
   ];
 
   nixpkgs.overlays = [
