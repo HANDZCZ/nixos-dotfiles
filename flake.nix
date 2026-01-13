@@ -29,6 +29,22 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    nix-cachyos-kernel = {
+      url = "github:xddxdd/nix-cachyos-kernel/release";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://attic.xuyh0120.win/lantian" # nix-cachyos-kernel
+    ];
+    extra-trusted-public-keys = [
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" # nix-cachyos-kernel
+    ];
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: {
