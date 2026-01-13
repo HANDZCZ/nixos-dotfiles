@@ -183,6 +183,7 @@
         autoPasteClipboard= false;
         terminalCommand = "alacritty -e";
         viewMode = "list";
+        useApp2Unit = true;
       };
       notifications = {
         enabled = true;

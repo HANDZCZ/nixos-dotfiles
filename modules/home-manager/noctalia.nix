@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 {
   imports = [
@@ -15,5 +15,5 @@
     cliphist
     mutagen
     xdg-desktop-portal
-  ];
+  ] ++ lib.optionals config.programs.noctalia-shell.settings.appLauncher.useApp2Unit [ app2unit ];
 }
