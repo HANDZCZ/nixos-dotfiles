@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, pkgs-unstable, ... }:
 
 {
   imports = [
@@ -17,7 +17,19 @@
     # needed to open ports
     localsend.enable = true;
     # doesn't work otherwise
-    steam.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = [pkgs-unstable.proton-ge-bin];
+    };
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+      args = [
+        "--rt"
+        "--expose-wayland"
+      ];
+    };
     gpu-screen-recorder.enable = true;
   };
 
