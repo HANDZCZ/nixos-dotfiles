@@ -51,6 +51,7 @@
   home.packages = with pkgs; [
     btop
     htop
+    fastfetch
     brave
     eza
     bat
@@ -58,5 +59,19 @@
     qbittorrent
     gpu-screen-recorder
     nemo-with-extensions
+    file-roller
+    unrar
+
+    # for testing steam, gamescope, ...
+    vulkan-tools
+
+    # disk io tools
+    sysstat # iostat
+    iotop   # like ps for io
+    iozone  # disk io speed testing
+
+    # gaming
+    lutris
+    protonplus
   ];
 }
