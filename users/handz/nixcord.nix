@@ -81,7 +81,6 @@
         noReplyMention.enable = true;
         normalizeMessageLinks.enable = true;
         noUnblockToJump.enable = true;
-        openInApp.enable = true;
         pauseInvitesForever.enable = true;
         permissionsViewer.enable = true;
         petpet.enable = true;
@@ -162,6 +161,10 @@
         MoreQuickReactions = {
           enabled = true;
           reactionCount = 10;
+        };
+        OpenInApp = {
+          enabled = true;
+          epic = false;
         };
         # Equicord
         MessageLoggerEnhanced = {
