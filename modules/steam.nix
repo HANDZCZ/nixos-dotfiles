@@ -12,7 +12,6 @@
   programs = {
     steam = {
       enable = true;
-      gamescopeSession.enable = true;
       extraCompatPackages = [ pkgs-unstable.proton-ge-bin ];
       platformOptimizations.enable = true;
       protontricks.enable = true;
