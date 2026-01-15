@@ -19,6 +19,12 @@
   home.homeDirectory = "/home/${user}";
   home.stateVersion = "25.11";
 
+  home.sessionVariables = {
+    #EDITOR = "nvim";
+    BROWSER = "brave";
+    TERMINAL = "alacritty";
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
