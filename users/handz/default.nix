@@ -22,6 +22,7 @@ in {
     localsend.enable = true;
     gpu-screen-recorder.enable = true;
   };
+  services.gvfs.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
