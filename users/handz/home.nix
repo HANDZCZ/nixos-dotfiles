@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ osConfig, pkgs, user, lib, ... }:
 
 {
   imports = [
@@ -73,5 +73,7 @@
     # gaming
     lutris
     protonplus
-  ];
+  ]
+  # htop for nvidia cards
+  ++ lib.optionals osConfig.hardware.nvidia.enabled [ pkgs.nvtopPackages.nvidia ];
 }
