@@ -107,6 +107,7 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
+    trusted-users = [ "handz" ];
   };
   nix.gc = {
     automatic = true;
