@@ -5,6 +5,7 @@
     ../../modules/home-manager/prefer-dark.nix
     ../../modules/home-manager/polkit-gnome.nix
     ./scripts
+    ./autostart.nix
     ./noctalia.nix
     ./nixcord.nix
     ./git.nix
