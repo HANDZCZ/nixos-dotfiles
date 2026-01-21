@@ -128,7 +128,7 @@
             {
               id = "Tray";
               blacklist = [];
-              drawerEnabled= true;
+              drawerEnabled = false;
               hidePassive = false;
               pinned = [];
             }
