@@ -45,6 +45,14 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.11";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 
   nixConfig = {

@@ -14,6 +14,7 @@
     ./cursor_icon_themes.nix
     ./alacritty.nix
     ./starship.nix
+    ./nixvim.nix
   ];
 
   home.username = "${user}";
@@ -24,11 +25,6 @@
     #EDITOR = "nvim";
     BROWSER = "brave";
     TERMINAL = "alacritty";
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
   };
 
   programs.lazygit = {
