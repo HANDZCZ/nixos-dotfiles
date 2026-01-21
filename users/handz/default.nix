@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, pkgs-unstable, ... }:
 
 let
   user = "handz";
@@ -30,7 +30,7 @@ in {
     users.${user} = import ./home.nix;
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit inputs user;
+      inherit inputs user pkgs-unstable;
     };
   };
   environment.sessionVariables = {
