@@ -27,6 +27,10 @@
     TERMINAL = "alacritty";
   };
 
+  services.podman = {
+    enable = true;
+  };
+
   programs.ranger = {
     enable = true;
     settings = {
@@ -86,6 +90,8 @@
     unzip
     cabextract
     p7zip
+    podman-compose
+    podman-desktop
 
     # for testing steam, gamescope, ...
     vulkan-tools
