@@ -1,4 +1,4 @@
-{ osConfig, pkgs, user, lib, ... }:
+{ osConfig, pkgs, pkgs-unstable, user, lib, ... }:
 
 {
   imports = [
@@ -75,6 +75,8 @@
   };
 
   home.packages = with pkgs; [
+    pkgs-unstable.signal-desktop
+
     btop
     htop
     fastfetch
