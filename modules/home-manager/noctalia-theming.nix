@@ -2,20 +2,25 @@
 
 {
   home.packages = with pkgs; [
-    adw-gtk3
     nwg-look
     kdePackages.qt6ct
   ];
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "adw-gtk3-dark";
-      # disable GTK4 writing gtk.css
-      # this is needed because noctalia will be creating gtk.css for theming
-      package = null;
-    };
-  };
+  gtk =
+    let
+      settingsVersions = [ "3" "4" ];
+      gtkConfigFn = version: {
+        extraCss = ''
+          @import url("${config.home.homeDirectory}/.config/gtk-${version}.0/noctalia.css");
+        '';
+      };
+    in {
+      enable = true;
+      theme = {
+        name = "adw-gtk3-dark";
+        package = pkgs.adw-gtk3;
+      };
+    } // lib.genAttrs' settingsVersions (version: lib.nameValuePair "gtk${version}" (gtkConfigFn version));
 
   qt =
     let
