@@ -27,6 +27,7 @@
     #EDITOR = "nvim";
     BROWSER = "brave";
     TERMINAL = "alacritty";
+    NIXOS_OZONE_WL = "1";
   };
 
   programs.ranger = {
