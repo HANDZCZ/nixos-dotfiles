@@ -86,7 +86,6 @@
     bat
     yt-dlp
     qbittorrent
-    gpu-screen-recorder
     nemo-with-extensions
     file-roller
     unrar
