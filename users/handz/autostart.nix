@@ -24,6 +24,7 @@ in {
       (mkCondEntry (nixcord.enable && nixcord.discord.enable) "Discord" "discord --start-minimized")
       (mkInPkgsEntry "qbittorrent" "qBittorrent" "qbittorrent --confirm-legal-notice")
       (mkInPkgsEntry "signal-desktop" "Signal" "signal-desktop --start-in-tray")
+      (mkCondEntry osConfig.programs.steam.enable "Steam" "steam -nochatui -nofriendsui -silent")
     ];
   };
 }
