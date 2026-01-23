@@ -37,7 +37,22 @@
           smartRelativeLine = true;
         };
       };
-      keybindings = [];
+      keybindings = [
+        {
+          key = "alt+k";
+          command = "editor.action.moveLinesUpAction";
+          when = "editorTextFocus && !editorReadonly";
+        }
+        {
+          key = "alt+j";
+          command = "editor.action.moveLinesDownAction";
+          when = "editorTextFocus && !editorReadonly";
+        }
+        {
+          key = "ctrl+numpad_multiply";
+          command = "rust-analyzer.expandMacro";
+        }
+      ];
     };
   };
 }
