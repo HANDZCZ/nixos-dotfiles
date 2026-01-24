@@ -80,10 +80,10 @@
           system = "x86_64-linux";
           pkgs = import nixpkgs {
             config.allowUnfree = true;
-            overlays = [
-              inputs.nix-cachyos-kernel.overlays.pinned
-              inputs.nix-gaming.overlays.default
-              inputs.nix-vscode-extensions.overlays.default
+            overlays = with inputs; [
+              nix-cachyos-kernel.overlays.pinned
+              nix-gaming.overlays.default
+              nix-vscode-extensions.overlays.default
             ];
             inherit system;
           };
