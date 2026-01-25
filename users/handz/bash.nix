@@ -11,6 +11,11 @@ in {
       nix-rbs = "sudo nixos-rebuild switch --flake ${xdg.configHome}/nixos#nixos-desktop";
       nix-rbb = "sudo nixos-rebuild boot --flake ${xdg.configHome}/nixos#nixos-desktop";
 
+      # Remote launch
+      # https://dblsaiko.net/kb-gui-login-ssh.html
+      rlaunch-shell = ''systemd-run -S --uid="$(whoami)" -p PAMName=login -E XDG_SEAT=seat0 -E XDG_VTNR=1 -E XDG_SESSION_TYPE=tty -E XDG_SESSION_CLASS=user'';
+      rlaunch-niri = ''systemd-run --uid="$(whoami)" -p PAMName=login -E XDG_SEAT=seat0 -E XDG_VTNR=1 -E XDG_SESSION_TYPE=tty -E XDG_SESSION_CLASS=user niri-session'';
+
       # Basic
       ll = "${pkgs.eza}/bin/eza -lag --icons -s type";
       cat = "${pkgs.bat}/bin/bat";
