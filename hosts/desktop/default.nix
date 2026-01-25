@@ -79,6 +79,23 @@ in {
   };
 
   services.openssh.enable = true;
+
+  networking = {
+    interfaces = {
+      enp39s0 = {
+        wakeOnLan = {
+          enable = true;
+          policy = [
+            "magic"
+          ];
+        };
+      };
+    };
+    firewall = {
+      allowedUDPPorts = [ 9 ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     neovim
     wget
@@ -113,10 +130,12 @@ in {
     auto-optimise-store = true;
     trusted-users = [ "handz" ];
   };
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
   system.stateVersion = "25.11";
 }
