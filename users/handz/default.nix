@@ -8,6 +8,7 @@ in {
     ../../modules/niri.nix
     ../../modules/steam.nix
     ../../modules/wine-ntsync.nix
+    ../../modules/sunshine.nix
   ];
 
   users.users.${user} = {
