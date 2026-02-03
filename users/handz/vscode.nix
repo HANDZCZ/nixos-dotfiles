@@ -52,6 +52,27 @@
           key = "ctrl+numpad_multiply";
           command = "rust-analyzer.expandMacro";
         }
+        {
+          key = "ctrl+alt+l";
+          command = "editor.action.formatDocument";
+          when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
+        }
+        {
+          key = "alt+enter";
+          command = "editor.action.quickFix";
+          when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+        }
+        # remove defaults
+        {
+          key = "ctrl+shift+i";
+          command = "-editor.action.formatDocument";
+          when = "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
+        }
+        {
+          key = "ctrl+[Period]";
+          command = "-editor.action.quickFix";
+          when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+        }
       ];
     };
   };
