@@ -51,6 +51,9 @@
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs; [];
+    package = pkgs.obs-studio.override {
+      cudaSupport = osConfig.hardware.nvidia.enabled;
+    };
   };
 
   xdg.portal = {
