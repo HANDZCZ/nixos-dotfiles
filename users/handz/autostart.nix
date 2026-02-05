@@ -7,7 +7,9 @@ let
     pkgs.makeDesktopItem {
       desktopName = "${name}-autostart";
       name = "${name}-autostart";
-      exec = "${command}";
+      # TODO: noctalia doesn't notify systemd when it's ready
+      #       programs that expect tray to be available fail to start or start without it
+      exec = "${pkgs.bash}/bin/bash -c \"sleep 3s; ${command}\"";
       destination = "/";
     } + "/${name}-autostart.desktop";
   mkCondEntry = condition: name: command: lib.mkIf condition (mkEntry name command);
