@@ -4,6 +4,7 @@
   imports = [
     ../../modules/home-manager/prefer-dark.nix
     ../../modules/home-manager/polkit-gnome.nix
+    ../../modules/home-manager/mailspring.nix
     ./scripts
     ./autostart.nix
     ./noctalia.nix
@@ -27,6 +28,13 @@
   home.sessionVariables = {
     BROWSER = "brave";
     NIXOS_OZONE_WL = "1";
+  };
+
+  programs.mailspring = {
+    enable = true;
+    # window doesn't get created under wayland
+    # and no useful logs are produced...
+    forceX11 = true;
   };
 
   programs.ranger = {
