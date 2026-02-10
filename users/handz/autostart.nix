@@ -14,10 +14,8 @@ let
     } + "/${name}-autostart.desktop";
   mkCondEntry = condition: name: command: lib.mkIf condition (mkEntry name command);
   isInPackages = package:
-    lib.elem pkgs.${package} config.home.packages
-    || lib.elem pkgs-unstable.${package} config.home.packages
-    || lib.elem pkgs.${package} osConfig.environment.systemPackages
-    || lib.elem pkgs-unstable.${package} osConfig.environment.systemPackages;
+    lib.any (p: lib.getName p == package) config.home.packages
+    || lib.any (p: lib.getName p == package) osConfig.environment.systemPackages;
   mkInPkgsEntry = package: name: command: mkCondEntry (isInPackages package) name command;
 in {
   xdg.autostart = {
