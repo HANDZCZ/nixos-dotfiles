@@ -110,6 +110,7 @@ in {
     git
     xterm
     net-tools
+    dig
   ];
 
   hardware.graphics.enable = true;
