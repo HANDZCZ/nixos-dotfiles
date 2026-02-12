@@ -9,7 +9,7 @@
     enable = true;
     settings = {
       default = [
-        "kitty.desktop"
+        "alacritty.desktop"
       ];
     };
   };
