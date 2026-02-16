@@ -23,6 +23,7 @@ in {
     gpu-screen-recorder.enable = true;
   };
   services.gvfs.enable = true;
+  services.zerotierone.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
