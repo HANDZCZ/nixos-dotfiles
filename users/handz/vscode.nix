@@ -14,6 +14,8 @@
         rust-lang.rust-analyzer
         tamasfe.even-better-toml
         fill-labs.dependi
+        # Nix
+        jnoortheen.nix-ide
       ];
       userSettings = {
         workbench = {
