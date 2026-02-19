@@ -14,6 +14,15 @@
     };
   };
 
+  dconf = {
+    settings = {
+      "org/cinnamon/desktop/applications/terminal" = {
+        exec = "alacritty";
+        #exec-arg = "";
+      };
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
