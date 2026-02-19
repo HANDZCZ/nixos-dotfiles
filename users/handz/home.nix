@@ -115,6 +115,9 @@
     # media player
     mpv
 
+    # music
+    pkgs-unstable.pear-desktop
+
     # for testing steam, gamescope, ...
     vulkan-tools
 
