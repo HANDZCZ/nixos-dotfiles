@@ -113,7 +113,7 @@
     file-roller
 
     # media player
-    vlc
+    mpv
 
     # for testing steam, gamescope, ...
     vulkan-tools
