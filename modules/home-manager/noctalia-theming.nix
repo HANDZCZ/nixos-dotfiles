@@ -1,6 +1,19 @@
 { config, lib, pkgs, inputs, ... }:
 
-{
+let
+  noctalia-package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in {
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
+
+  programs.noctalia-shell.package = lib.mkForce (noctalia-package.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [
+      ../../patches/noctalia/Fix-theme-template-apply-for-gtk.patch
+      ../../patches/noctalia/Fix-theme-template-apply-for-niri.patch
+      ../../patches/noctalia/Fix-theme-template-apply-for-alacritty.patch
+    ];
+  }));
 
   gtk =
     let

@@ -1,0 +1,29 @@
+From 27d6dddc9ec981dc041339af69da200173c06bbe Mon Sep 17 00:00:00 2001
+From: HANDZCZ <handz@email.cz>
+Date: Fri, 20 Feb 2026 23:33:43 +0100
+Subject: [PATCH 2/3] Fix theme template apply for niri
+
+---
+ Scripts/bash/template-apply.sh | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Scripts/bash/template-apply.sh b/Scripts/bash/template-apply.sh
+index 76851e9..07c9a02 100755
+--- a/Scripts/bash/template-apply.sh
++++ b/Scripts/bash/template-apply.sh
+@@ -303,6 +303,12 @@ niri)
+     CONFIG_FILE="$HOME/.config/niri/config.kdl"
+     INCLUDE_LINE='include "./noctalia.kdl"'
+ 
++    # If it is a read-only link don't do anything
++    # Fixes: Existing file '...' would be clobbered by backing up '...'
++    if [ -L "$CONFIG_FILE" ] && [ ! -w "$CONFIG_FILE" ]; then
++        exit 0
++    fi
++
+     # Check if the config file exists.
+     if [ ! -f "$CONFIG_FILE" ]; then
+         mkdir -p "$(dirname "$CONFIG_FILE")"
+-- 
+2.51.2
+
