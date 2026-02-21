@@ -2,6 +2,8 @@
 
 {
   home.packages = [
-    (import ./ytdl_list_playlist.nix { inherit config pkgs; })
+    (pkgs.callPackage ./ytdl_list_playlist.nix {
+      cacheHome = config.xdg.cacheHome;
+    })
   ];
 }
