@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -75,13 +75,16 @@
         predefinedScheme = "Eldritch";
       };
       templates = {
-        gtk = true;
-        qt = true;
-        niri = true;
-        alacritty = true;
-        #code = true;
-        discord = true;
-        #helix = true;
+        activeTemplates = lib.mapAttrsToList (key: val: { id = key; enabled = val; }) {
+          gtk = true;
+          qt = true;
+          niri = true;
+          alacritty = true;
+          #code = true;
+          discord = true;
+          #helix = true;
+          qimgv = true;
+        };
         enableUserTemplates = false;
       };
       wallpaper = {
@@ -155,6 +158,9 @@
               id = "plugin:screen-recorder";
             }
             {
+              id = "KeepAwake";
+            }
+            {
               id = "Microphone";
               displayMode = "alwaysHide";
             }
@@ -181,6 +187,7 @@
         enabled = false;
       };
       controlCenter = {
+        openAtMouseOnBarRightClick = false;
         cards = [
             {
               id = "profile-card";
@@ -195,6 +202,9 @@
           left = [
             {
               id = "Network";
+            }
+            {
+              id = "KeepAwake";
             }
           ];
           right = [
@@ -248,6 +258,14 @@
       };
       sessionMenu = {
         largeButtonsStyle = false;
+      };
+      idle = {
+        enabled = true;
+        screenOffTimeout = 600;
+        lockTimeout = 660;
+        suspendTimeout = 0;
+        fadeDuration = 5;
+        #customCommands = [];
       };
       audio = {
         cavaFrameRate = 10;
