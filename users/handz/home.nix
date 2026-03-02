@@ -21,6 +21,7 @@
     ./lazygit.nix
     ./ranger.nix
     ./obs.nix
+    ./qimgv.nix
   ];
 
   home.username = "${user}";
