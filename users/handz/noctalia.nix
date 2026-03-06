@@ -71,7 +71,7 @@
       colorSchemes = {
         darkMode = true;
         useWallpaperColors = false;
-        matugenSchemeType = "scheme-fruit-salad";
+        generationMethod = "content";
         predefinedScheme = "Eldritch";
       };
       templates = {
@@ -100,6 +100,7 @@
       };
       bar = {
         #outerCorners = false;
+        rightClickFollowMouse= false;
         widgets = {
           left = [
             {
@@ -187,7 +188,6 @@
         enabled = false;
       };
       controlCenter = {
-        openAtMouseOnBarRightClick = false;
         cards = [
             {
               id = "profile-card";
