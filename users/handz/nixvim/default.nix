@@ -12,6 +12,7 @@ in {
     ./which-key.nix
     ./rnvimr.nix
     ./pandoc.nix
+    ./lsp.nix
   ];
 
   programs.nixvim = {
