@@ -6,6 +6,7 @@ in {
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./lualine.nix
+    ./blink-cmp.nix
     ./startify.nix
     ./which-key.nix
     ./rnvimr.nix
