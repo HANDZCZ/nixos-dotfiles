@@ -14,19 +14,12 @@ in {
     ./pandoc.nix
     ./lsp.nix
     ./tiny-inline-diagnostic.nix
+    ./theme.nix
   ];
 
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    colorschemes.onedark = {
-      enable = true;
-      settings = {
-        style = "darker";
-        # niri doesn't support blur yet
-        #transparent = true;
-      };
-    };
     globals = {
       mapleader = " ";
     };
