@@ -63,15 +63,7 @@
             "delete"
             "topdelete"
           ] (_: { show_count = true; });
-          preview_config = {
-            border = "rounded";
-          };
         };
-        luaConfig.post = ''
-          vim.api.nvim_set_hl(0, "GitSignsAddInline", { bg = "#284828" })
-          vim.api.nvim_set_hl(0, "GitSignsChangeInline", { bg = "#1f2f45" })
-          vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { bg = "#4a2424" })
-        '';
       };
     };
   };
