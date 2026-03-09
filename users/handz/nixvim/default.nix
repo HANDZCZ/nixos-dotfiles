@@ -13,6 +13,7 @@ in {
     ./rnvimr.nix
     ./pandoc.nix
     ./lsp.nix
+    ./tiny-inline-diagnostic.nix
   ];
 
   programs.nixvim = {
