@@ -60,6 +60,18 @@ in {
         };
       };
       nix.enable = true;
+      blink-indent = {
+        enable = true;
+        settings = {
+          static = {
+            char = "▏";
+          };
+          scope = {
+            char = "▏";
+            highlights = [ "BlinkIndentScope" ];
+          };
+        };
+      };
     };
   };
 }
