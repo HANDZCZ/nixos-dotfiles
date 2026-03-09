@@ -80,11 +80,14 @@
     ];
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, ... }: {
     nixosConfigurations = {
       nixos-desktop =
         let
           system = "x86_64-linux";
+          set-nixPath = { inputs, ... }: {
+            nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+          };
           pkgs = import nixpkgs {
             config.allowUnfree = true;
             overlays = with inputs; [
@@ -101,7 +104,10 @@
         in nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = { inherit inputs pkgs-unstable; };
-          modules = [ ./hosts/desktop ];
+          modules = [
+            ./hosts/desktop
+            set-nixPath
+          ];
         };
     };
   };
