@@ -60,6 +60,12 @@ in {
       spelllang = [ "cs" "en" ];
     };
     plugins = {
+      treesitter = {
+        enable = true;
+        settings = {
+          highlight.enable = true;
+        };
+      };
       nix.enable = true;
     };
   };
