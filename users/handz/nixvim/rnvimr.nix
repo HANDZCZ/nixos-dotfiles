@@ -5,6 +5,7 @@
     globals = {
       rnvimr_enable_ex = 1;
       rnvimr_hide_gitignore = 0;
+      rnvimr_draw_border = 0;
     };
     extraPlugins = with pkgs.vimPlugins; [
       rnvimr
