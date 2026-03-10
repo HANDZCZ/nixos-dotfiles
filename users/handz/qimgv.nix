@@ -1,7 +1,18 @@
-{ lib, pkgs-unstable, ... }:
+{ lib, pkgs, pkgs-unstable, ... }:
 
-{
-  home.packages = [ pkgs-unstable.qimgv ];
+let
+  # use unstable package for Qt6 and more image formats support
+  package = pkgs-unstable.qimgv.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [
+      (pkgs.fetchpatch2 {
+        name = "Fix-system-theme-usage.diff";
+        url = "https://github.com/easymodo/qimgv/pull/639.diff?full_index=1";
+        hash = "sha256-Vvd7hjBs5YZ9uILtvs3CTkh9I823pMyMWNuVOe5u8d0=";
+      })
+    ];
+  });
+in {
+  home.packages = [ package ];
 
   xdg.mimeApps.defaultApplications = lib.genAttrs [
     "image/png"
