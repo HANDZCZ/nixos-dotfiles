@@ -29,6 +29,7 @@ in {
         infoBarWindowed = true;
         playVideoSounds = true;
         zoomIndicatorMode = 1;
+        useSystemColorScheme = true;
       };
     };
   };
