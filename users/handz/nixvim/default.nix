@@ -5,6 +5,7 @@ let
 in {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    ./guards
     ./gitsigns.nix
     ./lualine.nix
     ./blink-cmp.nix
