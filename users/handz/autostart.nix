@@ -1,4 +1,4 @@
-{ config, osConfig, lib, pkgs, pkgs-unstable, ... }:
+{ config, osConfig, lib, pkgs, ... }:
 
 let
   nixcord = config.programs.nixcord;

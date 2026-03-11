@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, config, ... }:
 
 let
   xdg = config.xdg;
@@ -30,14 +30,14 @@ in {
 
       # tab and indent related
       shiftwidth = 4;
-      tabstop= 4;
+      tabstop = 4;
       softtabstop = 4;
       expandtab = true;
       smartindent = true;
 
       # file history
       undofile = true;
-      undodir="${xdg.stateHome}/vim/undodir";
+      undodir = "${xdg.stateHome}/vim/undodir";
       #noswapfile = true;
       updatetime = 5000;
       #nobackup = true;
