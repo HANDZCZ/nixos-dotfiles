@@ -5,6 +5,8 @@ let
   blink-cmp-providers = blink-cmp-cfg.settings.sources.providers;
 in {
   programs.nixvim = {
+    dependencies.ripgrep.enable = lib.mkIf (blink-cmp-providers.ripgrep.enabled) true;
+
     plugins = {
       colorful-menu.enable = true;
       blink-cmp = {
@@ -39,7 +41,8 @@ in {
           };
           sources = {
             default = [ "lsp" "buffer" "snippets" "path" ]
-              ++ lib.optional blink-cmp-providers.spell.enabled "spell";
+              ++ lib.optional blink-cmp-providers.spell.enabled "spell"
+              ++ lib.optional blink-cmp-providers.ripgrep.enabled "ripgrep";
             providers = {
               spell = {
                 enabled = true;
@@ -50,11 +53,22 @@ in {
                   max_entries = 25;
                 };
               };
+              ripgrep = {
+                enabled = true;
+                module = "blink-ripgrep";
+                name = "Ripgrep";
+                async = true;
+                score_offset = -80;
+                opts = {
+                  prefix_min_len = 1;
+                };
+              };
             };
           };
         };
       };
       blink-cmp-spell.enable = blink-cmp-providers.spell.enabled;
+      blink-ripgrep.enable = blink-cmp-providers.ripgrep.enabled;
     };
   };
 }
