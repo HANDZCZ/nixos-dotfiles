@@ -13,7 +13,7 @@ in {
   users.users.${user} = {
     isNormalUser = true;
     initialPassword = "secure_tm";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "gamemode" ];
     packages = with pkgs; [];
   };
 
