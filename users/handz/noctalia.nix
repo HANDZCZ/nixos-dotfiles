@@ -95,9 +95,7 @@
         enabled = true;
         transitionType = "honeycomb";
         overviewEnabled = true;
-        recursiveSearch = true;
-        wallhavenPurity = "010";
-        wallhavenApiKey = "";
+        viewMode = "browse";
         wallhavenResolutionWidth = "2560";
         wallhavenResolutionHeight = "1440";
         wallhavenResolutionMode = "atleast";
