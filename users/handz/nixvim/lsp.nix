@@ -19,20 +19,24 @@
                     let
                       flake = ${flake};
                       pkgs = import flake.inputs.nixpkgs {};
+                      pkgs-unstable = import flake.inputs.nixpkgs-unstable {};
                     in (flake.inputs.home-manager.lib.homeManagerConfiguration {
                       inherit pkgs;
-                      modules = with flake.inputs; [
-                        nixvim.homeModules.nixvim
-                        nixcord.homeModules.nixcord
-                        noctalia.homeModules.default
+                      modules = [
+                        ${config.xdg.configHome}/nixos/users/${config.home.username}/home.nix
                         {
                           home = {
-                            username = "bogus";
-                            homeDirectory = "/tmp/bogus";
+                            username = "${config.home.username}";
+                            homeDirectory = "${config.home.homeDirectory}";
                             stateVersion = "${config.home.stateVersion}";
                           };
                         }
                       ];
+                      extraSpecialArgs = {
+                        inherit pkgs-unstable;
+                        inputs = flake.inputs;
+                        osConfig = flake.nixosConfigurations.nixos-desktop.config;
+                      };
                     }).options
                   '';
                 };
