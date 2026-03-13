@@ -55,6 +55,7 @@ in {
       spelllang = [ "cs" "en" ];
     };
     plugins = {
+      treesitter-context.enable = true;
       treesitter = {
         enable = true;
         settings = {
