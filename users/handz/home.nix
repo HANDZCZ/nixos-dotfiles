@@ -1,4 +1,4 @@
-{ osConfig, pkgs, pkgs-unstable, user, lib, ... }:
+{ osConfig, pkgs, pkgs-unstable, lib, ... }:
 
 {
   imports = [
@@ -23,10 +23,6 @@
     ./obs.nix
     ./qimgv.nix
   ];
-
-  home.username = "${user}";
-  home.homeDirectory = "/home/${user}";
-  home.stateVersion = "25.11";
 
   home.sessionVariables = {
     BROWSER = "brave";

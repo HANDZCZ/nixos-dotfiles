@@ -28,10 +28,16 @@ in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${user} = import ./home.nix;
+    users.${user} = { ... }: {
+      imports = [ ./home.nix ];
+
+      home.username = "${user}";
+      home.homeDirectory = "/home/${user}";
+      home.stateVersion = "25.11";
+    };
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit inputs user pkgs-unstable;
+      inherit inputs pkgs-unstable;
     };
   };
 }
