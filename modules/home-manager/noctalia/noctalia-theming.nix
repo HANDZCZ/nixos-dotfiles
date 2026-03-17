@@ -8,9 +8,9 @@
   programs.noctalia-shell.overlays = [
     (_: prev: prev.overrideAttrs (old: {
       patches = (old.patches or []) ++ [
-        ../../patches/noctalia/Fix-theme-template-apply-for-gtk.patch
-        ../../patches/noctalia/Fix-theme-template-apply-for-niri.patch
-        ../../patches/noctalia/Fix-theme-template-apply-for-alacritty.patch
+        ../../../patches/noctalia/Fix-theme-template-apply-for-gtk.patch
+        ../../../patches/noctalia/Fix-theme-template-apply-for-niri.patch
+        ../../../patches/noctalia/Fix-theme-template-apply-for-alacritty.patch
       ];
     }))
   ];

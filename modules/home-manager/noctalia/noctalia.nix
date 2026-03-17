@@ -3,7 +3,7 @@
 let
   quickshell_patches = [
     # https://github.com/NixOS/nixpkgs/pull/483139
-    ../../patches/noctalia-qs/Fix-unneccessary-reloads.patch
+    ../../../patches/noctalia-qs/Fix-unneccessary-reloads.patch
   ];
 
   cfg = config.programs.noctalia-shell;
