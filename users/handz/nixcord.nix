@@ -55,6 +55,13 @@ in {
         betterSettings.enable = true;
         betterUploadButton.enable = true;
         biggerStreamPreview.enable = true;
+        callTimer = {
+          enable = true;
+          showSeconds = true;
+          showWithoutHover = true;
+          allCallTimers = true;
+          showRoleColor = true;
+        };
         ClearURLs.enable = true;
         consoleJanitor.enable = true;
         copyEmojiMarkdown.enable = true;
@@ -71,7 +78,10 @@ in {
         fakeNitro.enable = true;
         fakeProfileThemes.enable = true;
         fixImagesQuality.enable = true;
-        fixYoutubeEmbeds.enable = true;
+        fixYoutubeEmbeds = {
+          enable = true;
+          youtubeDescription = true;
+        };
         forceOwnerCrown.enable = true;
         friendsSince.enable = true;
         fullSearchContext.enable = true;
@@ -139,10 +149,6 @@ in {
         showHiddenThings.enable = true;
         showMeYourName.enable = true;
         silentTyping.enable = true;
-        sortFriendRequests = {
-          enable = true;
-          showDates = true;
-        };
         startupTimings.enable = true;
         stickerPaste.enable = true;
         summaries.enable = true;
@@ -172,35 +178,32 @@ in {
         whoReacted.enable = true;
         youtubeAdblock.enable = true;
         # Equicord
-        allCallTimers = {
-          enable = true;
-          showSeconds = true;
-          showWithoutHover = true;
-        };
         betterAudioPlayer.enable = true;
         characterCounter.enable = true;
         gifCollections.enable = true;
+        messageLoggerEnhanced = {
+          enable = true;
+          saveImages = true;
+          ignoreSelf = true;
+        };
+        sortFriends = {
+          enable = true;
+          showDates = true;
+        };
+        soundBoardLogger = {
+          enable = true;
+          fileType = ".mp3";
+        };
         splitLargeMessages.enable = true;
         whosWatching.enable = true;
-        youtubeDescription.enable = true;
       };
     };
     extraConfig = {
       plugins = {
         # Vencord
-        OpenInApp = {
-          enabled = true;
+        openInApp = {
+          enable = true;
           epic = false;
-        };
-        # Equicord
-        MessageLoggerEnhanced = {
-          enabled = true;
-          saveImages = true;
-          ignoreSelf = true;
-        };
-        SoundBoardLogger = {
-          enabled = true;
-          FileType = ".mp3";
         };
       };
     };
