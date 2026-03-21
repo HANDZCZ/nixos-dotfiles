@@ -12,6 +12,7 @@
 
   programs.noctalia-shell = {
     enable = true;
+    dailyWallpaper = true;
 
     plugins = {
       sources = [
