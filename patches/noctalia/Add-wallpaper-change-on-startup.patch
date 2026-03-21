@@ -1,0 +1,25 @@
+From 544e007d8432513173bf52314b4286fda0975a37 Mon Sep 17 00:00:00 2001
+From: HANDZCZ <handz@email.cz>
+Date: Sat, 21 Mar 2026 14:32:44 +0100
+Subject: [PATCH] feat(wallpaper): add daily wallpaper change
+
+---
+ Services/Control/HooksService.qml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Services/Control/HooksService.qml b/Services/Control/HooksService.qml
+index 872662a84..da06ed2d5 100644
+--- a/Services/Control/HooksService.qml
++++ b/Services/Control/HooksService.qml
+@@ -267,6 +267,8 @@ Singleton {
+ 
+   // Execute startup hook
+   function executeStartupHook() {
++    Quickshell.execDetached(["sh", "-lc", `sleep 1; noctalia-change-wallpaper --daily "${Settings.data.wallpaper.directory}"`]);
++    Logger.d("HooksService", `Executed daily wallpaper change script.`);
+     if (!Settings.data.hooks?.enabled) {
+       return;
+     }
+-- 
+2.51.2
+
