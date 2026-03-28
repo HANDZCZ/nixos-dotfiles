@@ -7,6 +7,7 @@ let
     name = "noctalia-change-wallpaper";
     runtimeInputs = with pkgs; [
       coreutils-full
+      findutils
       fd
     ];
 
@@ -34,6 +35,8 @@ let
 
       LAST_CHANGED_FILE="$HOME/.cache/noctalia/daily_wallpaper_last_change"
       mkdir -p "''${LAST_CHANGED_FILE%/*}"
+      USED_WALLPAPERS_FILE="$HOME/.cache/noctalia/daily_wallpaper_used_wallpapers"
+      touch "$USED_WALLPAPERS_FILE"
       TODAY=$(date +%Y-%m-%d)
       CURRENT_WALLPAPER="$(noctalia-shell ipc call wallpaper get "")"
       WALLPAPERS_DIRECTORY="$HOME/Pictures/Wallpapers/"
@@ -49,11 +52,26 @@ let
 
       if [ "$DAILY" == "false" ] || [ ! -f "$LAST_CHANGED_FILE" ] || [ "$(cat "$LAST_CHANGED_FILE")" != "$TODAY" ]; then
         if [ -z "''${NEXT_WALLPAPER:-}" ]; then
-          NEXT_WALLPAPER="$(fd -t f -E "$CURRENT_WALLPAPER" . "$WALLPAPERS_DIRECTORY" | sort -R | tail -1)"
+          all_wallpapers_in_dir="$(fd -t f . "$WALLPAPERS_DIRECTORY" | sort)"
+          # pick random wallpaper that was not yet used
+          NEXT_WALLPAPER="$(comm -23 - <(sort "$USED_WALLPAPERS_FILE") <<< "$all_wallpapers_in_dir" | sort -R | tail -1)"
+          # if no wallpaper was found then from used wallpapers:
+          #   remove all wallpaper paths that were found in the directory
+          #   remove all invalid file paths (files that don't exist anymore)
+          if [ -z "$NEXT_WALLPAPER" ]; then
+            comm -13 - <(sort "$USED_WALLPAPERS_FILE") <<< "$all_wallpapers_in_dir" | xargs -d "\n" ls -1df 2>/dev/null | tee "$USED_WALLPAPERS_FILE" > /dev/null
+            # try to pick wallpaper again
+            NEXT_WALLPAPER="$(comm -23 - <(sort "$USED_WALLPAPERS_FILE") <<< "$all_wallpapers_in_dir" | sort -R | tail -1)"
+          fi
+        fi
+        if [ -z "$NEXT_WALLPAPER" ]; then
+          echo "No wallpaper was found in directory!"
+          exit 1
         fi
         echo "Changing noctalia wallpaper for user '$USER' from '$CURRENT_WALLPAPER' to '$NEXT_WALLPAPER'."
         noctalia-shell ipc call wallpaper set "$NEXT_WALLPAPER" "all"
         echo "$TODAY" > "$LAST_CHANGED_FILE"
+        echo "$NEXT_WALLPAPER" >> "$USED_WALLPAPERS_FILE"
       else
         echo "Noctalia wallpaper for user '$USER' was already changed to '$CURRENT_WALLPAPER' today."
         echo "If you want to change it anyway omit the '--daily' option."
