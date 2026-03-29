@@ -22,6 +22,7 @@
     ./ranger.nix
     ./obs.nix
     ./qimgv.nix
+    ./distrobox.nix
   ];
 
   home.sessionVariables = {
