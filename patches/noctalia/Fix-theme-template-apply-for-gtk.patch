@@ -1,6 +1,6 @@
-From a06c7389d8c83d537a20f42f0a0384124c9146dc Mon Sep 17 00:00:00 2001
+From 46c5bfa34f891cb90103665100c792e1776be570 Mon Sep 17 00:00:00 2001
 From: HANDZCZ <handz@email.cz>
-Date: Thu, 12 Mar 2026 20:33:38 +0100
+Date: Thu, 2 Apr 2026 14:19:51 +0200
 Subject: [PATCH] Fix theme template apply for gtk
 
 ---
@@ -8,22 +8,21 @@ Subject: [PATCH] Fix theme template apply for gtk
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/Scripts/python/src/theming/gtk-refresh.py b/Scripts/python/src/theming/gtk-refresh.py
-index 436bf91f0..5d680c80e 100644
+index 40b67e29d..2be064c13 100644
 --- a/Scripts/python/src/theming/gtk-refresh.py
 +++ b/Scripts/python/src/theming/gtk-refresh.py
-@@ -53,9 +53,10 @@ def ensure_gtk_css_import(gtk_css: Path, colors_file: Path, label: str) -> bool:
-         print(f"Error: {label} noctalia.css not found at {colors_file}", file=sys.stderr)
-         return False
- 
--    # If gtk.css is a symlink, replace it with a regular file
-     if gtk_css.is_symlink():
--        gtk_css.unlink()
-+        # If it is a symlink don't do anything
-+        # Fixes: Existing file '...' would be clobbered by backing up '...'
-+        return True
- 
-     if gtk_css.exists():
-         content = gtk_css.read_text()
+@@ -67,8 +67,9 @@ def ensure_gtk_css_import(gtk_css: Path, colors_file: Path, label: str) -> bool:
+                 target = resolved
+             else:
+                 # Read-only symlink (e.g. NixOS): convert to local file
+-                gtk_css.unlink()
+-                gtk_css.write_text(resolved.read_text())
++                # If it is a symlink don't do anything
++                # Fixes: Existing file '...' would be clobbered by backing up '...'
++                return True
+         # Append import to the end
+         new_content = content.rstrip()
+         if new_content and not new_content.endswith("\n"):
 -- 
 2.51.2
 
