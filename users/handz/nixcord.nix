@@ -1,19 +1,6 @@
-{ pkgs-unstable, pkgs, lib, inputs, ... }:
+{ pkgs-unstable, inputs, ... }:
 
-let
-  fixed-equibop = (pkgs-unstable.equibop.override { electron = pkgs.electron; })
-    .overrideAttrs (old: {
-      postFixup =
-        let
-          libPath = with pkgs; lib.makeLibraryPath [
-            libva
-            stdenv.cc.cc.lib
-          ];
-        in (old.postFixup or "") + ''
-          wrapProgram $out/bin/equibop --prefix LD_LIBRARY_PATH : "${libPath}"
-        '';
-    });
-in {
+{
   imports = [
     inputs.nixcord.homeModules.nixcord
   ];
@@ -27,7 +14,7 @@ in {
     };
     equibop = {
       enable = true;
-      package = fixed-equibop;
+      package = pkgs-unstable.equibop;
     };
     config = {
       /*themeLinks = [

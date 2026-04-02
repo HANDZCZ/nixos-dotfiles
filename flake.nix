@@ -35,6 +35,7 @@
       url = "github:kaylorben/nixcord";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        nixpkgs-nixcord.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
       };
