@@ -72,6 +72,7 @@
         forceBlackScreenCorners = true;
         # lock screen clock style
         clockStyle = "analog";
+        showSessionButtonsOnLockScreen = false;
       };
       colorSchemes = {
         darkMode = true;
@@ -93,6 +94,7 @@
       };
       wallpaper = {
         enabled = true;
+        skipStartupTransition = true;
         transitionType = "honeycomb";
         overviewEnabled = true;
         viewMode = "browse";
@@ -219,12 +221,12 @@
       appLauncher = {
         position = "bottom_center";
         showCategories = false;
+        enableSessionSearch = false;
         enableClipboardHistory = true;
         enableClipPreview = true;
         autoPasteClipboard= false;
         terminalCommand = "alacritty -e";
         viewMode = "list";
-        useApp2Unit = true;
         # show above fullscreen
         overviewLayer = true;
         density = "comfortable";
