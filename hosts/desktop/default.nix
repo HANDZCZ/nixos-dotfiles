@@ -14,6 +14,7 @@ in {
     ../../keymaps
     ../../modules/pipewire-low-latency.nix
     ../../modules/ntsync.nix
+    ../../modules/ccache.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -103,6 +104,8 @@ in {
       allowedUDPPorts = [ 9 ];
     };
   };
+
+  programs.ccache.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
