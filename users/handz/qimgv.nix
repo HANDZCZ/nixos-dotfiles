@@ -1,8 +1,10 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ lib, pkgs, pkgs-unstable, osConfig, ... }:
 
 let
   # use unstable package for Qt6 and more image formats support
-  package = pkgs-unstable.qimgv.overrideAttrs (old: {
+  package = (pkgs-unstable.qimgv.override (prev: {
+    stdenv = if osConfig.programs.ccache.enable then pkgs.ccacheStdenv else prev.stdenv;
+  })).overrideAttrs (old: {
     patches = (old.patches or []) ++ [
       (pkgs.fetchpatch2 {
         name = "Fix-system-theme-usage.diff";
