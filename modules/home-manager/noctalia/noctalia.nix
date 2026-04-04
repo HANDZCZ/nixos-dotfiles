@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, lib, config, inputs, osConfig, ... }:
 
 let
   cfg = config.programs.noctalia-shell;
@@ -56,6 +56,9 @@ in {
 
     final_package = package.override (old-noct: {
       extraPackages = (old-noct.extraPackages or []) ++ cfg.extraPackages;
+      quickshell = old-noct.quickshell.override (old-qs: {
+        stdenv = if osConfig.programs.ccache.enable then pkgs.ccacheStdenv else old-qs.stdenv;
+      });
     });
   in {
     systemd.enable = lib.mkDefault true;
