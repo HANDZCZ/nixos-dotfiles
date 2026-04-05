@@ -13,7 +13,6 @@ in {
       default = ''
         compression = true
         sloppiness = random_seed
-        cache_dir = ${cfg.cacheDir}
         umask = 007
         max_size = 16G
         compiler_check = content
@@ -26,7 +25,10 @@ in {
   };
 
   config = let
-    ccacheConfigFile = pkgs.writeText "ccache.conf" cfg.extraConfig;
+    ccacheConfigFile = pkgs.writeText "ccache.conf" ''
+      ${cfg.extraConfig}
+      cache_dir = ${cfg.cacheDir}
+    '';
   in lib.mkIf cfg.enable {
     nix.settings.extra-sandbox-paths = lib.optionals cfg.addToSandboxPaths [ "${cfg.cacheDir}" ];
     systemd.tmpfiles.rules = lib.mkIf (cfg.extraConfig != "") [ "L+ ${cfg.cacheDir}/ccache.conf - - - - ${ccacheConfigFile}" ];
