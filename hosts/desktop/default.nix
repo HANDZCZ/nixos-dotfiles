@@ -142,7 +142,21 @@ in {
     };
   };
 
-  programs.ccache.enable = true;
+  programs.ccache = {
+    enable = true;
+    cacheDir = "/var/cache/ccache";
+    # NOTE: disable compression and use btrfs compression instead - no double compress
+    #       enable file_clone to take advantage of btrfs CoW
+    #       also increase cache size to account for the increased uncompressed cache size
+    extraConfig = ''
+      compression = false
+      file_clone = true
+      max_size = 25G
+      sloppiness = random_seed
+      umask = 007
+      compiler_check = content
+    '';
+  };
 
   environment.systemPackages = with pkgs; [
     neovim
