@@ -19,9 +19,18 @@ in {
     openFirewall = false;
   };
 
+  networking.interfaces.phys0.wakeOnLan = {
+    enable = true;
+    policy = [ "magic" ];
+  };
+
+
   networking.firewall.interfaces = {
+    # 22 - ssh
+    # 9 - Wake on lan
     "${networks.servers}" = {
       allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ 9 ];
     };
     "${networks.lan}" = {
       allowedTCPPorts = [ 22 ];
