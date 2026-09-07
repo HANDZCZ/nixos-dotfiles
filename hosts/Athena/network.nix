@@ -69,9 +69,9 @@ in {
             UseDNS = false;
             UseNTP = false;
           };
-          # We need to handle cross subnet traffic
+          # We need to handle cross-subnet traffic
           # otherwise egress will want to go through default gateway and get blocked by rp_filter (from firewall)
-          # so we will use PBR and isolate vlan routes to specific table
+          # so we will use PBR and isolate vlan routes to a specific table
           # and turn it into symmetric routing
           dhcpV4Config = {
             RouteTable = vlan-offset-id;
@@ -79,7 +79,7 @@ in {
           };
           # Add vlan route to main table
           # so server-generated traffic can still be sent through the right vlan
-          # and not through default gateway only
+          # and not through the default gateway only
           routes = [{
             Gateway = "_dhcp4";
             Table = "main";
@@ -136,7 +136,7 @@ in {
   };
 
   networking.nftables = let
-    # Marks incoming traffic with vlan specific mark if the traffic belongs to it and doesn't have a mark
+    # Marks incoming traffic with a vlan specific mark if the traffic belongs to it and doesn't have a mark
     mkVlanMark = name:
       ''ct mark 0 iifname "vlan-${name}" ct mark set ${toString (net-cfg.netdevs."10-vlan-${name}".vlanConfig.Id + vlan-offset)}'';
   in {

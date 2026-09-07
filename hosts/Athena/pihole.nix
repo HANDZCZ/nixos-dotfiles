@@ -6,9 +6,9 @@
     ../../modules/dnscrypt-proxy.nix
   ];
 
-  # We don't need resolved since we are running out own DNS server
+  # We don't need resolved since we are running our own DNS server
   services.resolved.enable = false;
-  # Add pihole to DNS servers so we have DNS
+  # Add pihole to DNS servers, so we have DNS
   networking.nameservers = [ "127.0.0.1" ];
 
   services.pihole-ftl = {
@@ -35,7 +35,7 @@
 
   networking.firewall.interfaces = {
     # 53 - pihole dns
-    # 8012 - pohole web
+    # 8012 - pihole web
     # 8015 - dnscrypt-proxy webui
     "${networks.servers}" = {
       allowedTCPPorts = [ 53 8012 8015 ];
