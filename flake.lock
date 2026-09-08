@@ -188,11 +188,11 @@
         "umip-kmod": "umip-kmod"
       },
       "locked": {
-        "lastModified": 1787244452,
-        "narHash": "sha256-5qNGALuFUM2pA5FBo+mPBIoSwddlwvmvsFNrPqZM2IM=",
+        "lastModified": 1788905062,
+        "narHash": "sha256-zJCwECF6YIzQhpYyAtiHmhRMO7AL4UAMa9a6/lkxKds=",
         "owner": "HANDZCZ",
         "repo": "nix-tools-steam",
-        "rev": "c33320348382f2e51bba3cfd0c3635ae1c0c4383",
+        "rev": "166702c2dc899ff5da4ede7242767f1dba63c542",
         "type": "github"
       },
       "original": {

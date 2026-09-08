@@ -81,8 +81,10 @@
 
     nix-tools-steam = {
       url = "github:HANDZCZ/nix-tools-steam";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     deploy-rs = {
