@@ -7,6 +7,7 @@
     ../../modules/pipewire-low-latency.nix
     ../../modules/zramSwap.nix
     ../../modules/nvidia.nix
+    ./borg.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
