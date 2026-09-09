@@ -8,6 +8,7 @@
     ../../modules/zramSwap.nix
     ../../modules/nvidia.nix
     ./borg.nix
+    ./btrbk.nix
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
