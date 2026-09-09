@@ -41,6 +41,12 @@
       options = [ "subvol=games" "compress-force=zstd:1" ];
     };
 
+  fileSystems."/var/lib/borgbackups" =
+    { device = "/dev/disk/by-label/data-1TB";
+      fsType = "btrfs";
+      options = [ "noatime" "subvol=borg" ];
+    };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
